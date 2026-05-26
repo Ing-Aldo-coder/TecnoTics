@@ -62,8 +62,11 @@ export class ErpController {
           email: data.customerEmail,
           phone: data.customerPhone || 'N/A',
           company: data.customerCompany || 'Personal',
-          status: 'Cliente'
+          status: 'Cliente',
+          assignedExecutive: 'Sistema Automático',
+          lastInteraction: 'Checkout de E-Commerce completado exitosamente.'
         };
+
         await firstValueFrom(
           this.crmClient.send({ cmd: 'createCustomer' }, crmData)
         );

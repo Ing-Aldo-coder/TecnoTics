@@ -18,8 +18,11 @@ export class AppService {
       existing.phone = data.phone || existing.phone;
       existing.company = data.company || existing.company;
       existing.status = data.status || existing.status || 'Cliente';
+      existing.assignedExecutive = data.assignedExecutive || existing.assignedExecutive;
+      existing.lastInteraction = data.lastInteraction || existing.lastInteraction;
       return existing.save();
     }
+
     const createdCustomer = new this.customerModel({
       status: 'Cliente',
       ...data,

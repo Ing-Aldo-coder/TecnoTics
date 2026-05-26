@@ -19,6 +19,13 @@ export class Customer {
 
   @Prop({ required: true, enum: ['Lead', 'Cliente'], default: 'Lead' })
   status: string;
+
+  @Prop({ required: false, default: 'Alejandro Ventas' })
+  assignedExecutive: string;
+
+  @Prop({ required: false, default: 'Contacto Inicial Realizado' })
+  lastInteraction: string;
 }
 
 export const CustomerSchema = SchemaFactory.createForClass(Customer);
+

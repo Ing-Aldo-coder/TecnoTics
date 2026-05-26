@@ -1,0 +1,36 @@
+# Dependency directories
+**/node_modules/
+node_modules/
+
+# Build outputs
+**/dist/
+**/build/
+dist/
+build/
+
+# Local databases and docker volumes
+postgres_data/
+mongo_data/
+
+# Environment variables and secrets
+.env
+**/.env
+**/.env.local
+.env*.local
+
+# Logs
+*.log
+**/*.log
+logs/
+**/logs/
+
+# Editor and System files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Agent specific files
+.gemini/
+.system_generated/

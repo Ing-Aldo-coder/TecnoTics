@@ -1,0 +1,44 @@
+
+services:
+  # Base de Datos Relacional para ERP, SCM, Auth
+  postgres:
+    image: postgres:15-alpine
+    container_name: tecnotics_postgres
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: tecnotics_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  # Base de Datos NoSQL para CRM
+  mongo:
+    image: mongo:6
+    container_name: tecnotics_mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: user
+      MONGO_INITDB_ROOT_PASSWORD: password
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    restart: unless-stopped
+
+  # Message Broker para la comunicación de Microservicios
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: tecnotics_rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: user
+      RABBITMQ_DEFAULT_PASS: password
+    ports:
+      - "5672:5672"   # Puerto de AMQP
+      - "15672:15672" # Puerto de Management UI
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  mongo_data:
